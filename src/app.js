@@ -6,6 +6,8 @@ import lib from 'pipedrive';
 
 import routes from './routes';
 
+import './database';
+
 class App {
     constructor() {
         this.server = express();
