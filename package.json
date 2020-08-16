@@ -1,6 +1,6 @@
 {
-  "name": "FastApi",
-  "version": "1.0.0",
+  "name": "LinkApi",
+  "version": "Link.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
