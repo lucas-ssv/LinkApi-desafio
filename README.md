@@ -25,6 +25,12 @@ Dependências utilizadas para o desenvolvimento.
 | mongoose 
 | pipedrive 
 
+### Bling
+![Bling](https://user-images.githubusercontent.com/38146739/90338934-8e76f980-dfc3-11ea-9baa-91696649acf3.png)
+
+### MongoDB Atlas
+![Mongo](https://user-images.githubusercontent.com/38146739/90338939-95057100-dfc3-11ea-98fd-e5ac16357afb.png)
+
 ### Todos
 
  - Write MORE Tests
