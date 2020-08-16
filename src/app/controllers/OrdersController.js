@@ -1,5 +1,5 @@
 import { DealsController } from 'pipedrive';
-import jsonxml from 'jsontoxml';
+import jsonxml from '../../utils/jsontoxml';
 import axios from 'axios';
 
 import Order from '../schemas/Order';
@@ -16,24 +16,18 @@ class OrdersController {
 
         deals.data.forEach(async deal => {
             const item = {
-                pedido: {
-                    cliente: {
-                        nome: deal.person_name,
-                    },
-                    items: {
-                        item: {
-                            codigo: deal.id,
-                            descricao: deal.title,
-                            qtde: 1,
-                            vlr_unit: deal.value,
-                        }
-                    }
-                }
+                name: deal.person_name,
+                code: deal.id,
+                description: deal.title,
+                qtde: 1,
+                value: deal.value,
             };
 
             let xml = jsonxml(item);
             
-            await axios.post(`https://bling.com.br/Api/v2/pedido/json/?apikey=${process.env.BLING_API_KEY}&xml=${xml}`);
+            await axios.post(`
+                ${process.env.BLING_APP_URL}/pedido/json/?apikey=${process.env.BLING_API_KEY}&xml=${xml}
+            `);
 
             await Order.create({
                 id: deal.id,
@@ -53,7 +47,7 @@ class OrdersController {
             });
         });
         
-        return res.json({ success: 'Order released with success!' });
+        return res.status(200).json({ success: 'Order released with success!' });
     }
 }
 
